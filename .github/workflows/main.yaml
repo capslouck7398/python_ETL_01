@@ -1,0 +1,23 @@
+name: python-ETL-01
+on: 
+  push:
+    branches:
+      - master
+    schedule:
+      - cron: '0 13 * * *'
+jobs:
+  my-job:
+    name: My Job
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-python@v3
+    - name: install
+      run: |
+        echo '${{ secrets.FIREBASE_JSON }}' > service_account.json
+        echo '''${{ secrets.ETL_01 }}''' > ETL_01.txt
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    - name: python test
+      run: |
+        python3 123.py
