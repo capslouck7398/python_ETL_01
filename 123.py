@@ -16,7 +16,7 @@ for i in url_array:
   struct_time = time.localtime(nowTime)
   timeString = time.strftime("%Y-%m-%d-%I:%M:%S-%P", struct_time)
   respone = json.loads(ur.urlopen("https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-D0047-"+i+"?Authorization="+apiurl).read().decode('utf-8'))
-  doc_ref = db.collection("homework").document("student01").collection("test02")
+  doc_ref = db.collection("homework").document("student01").collection("test01")
   doc_ref.document('weather-'+timeString+"-"+i).set({'weather':respone})
 
 
