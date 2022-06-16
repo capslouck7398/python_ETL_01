@@ -15,7 +15,7 @@ jobs:
     - name: install
       run: |
         echo '''${{ secrets.FIREBASE_JSON }}''' > serviceAccount.json
-        echo '''${{ secrets.ETL_01 }}''' > ETL_01.txt
+        echo -n '''${{ secrets.ETL_01 }}''' > ETL_01.txt
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     - name: python test
